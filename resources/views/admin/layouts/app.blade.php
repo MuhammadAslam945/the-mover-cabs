@@ -59,8 +59,7 @@
     <!-- start js include path -->
 
     @yield('extra-js')
-    <script src="{{ asset('assets/admin/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/popper/popper.min.js') }}"></script>
+
     <script src="{{ asset('assets/admin/js/jquery.blockui.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/jquery.slimscroll.min.js') }}"></script>
     <!-- bootstrap -->
