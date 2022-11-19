@@ -56,12 +56,13 @@ class RoleController extends BaseController
     {
         if (access()->hasRole(RoleSlug::SUPER_ADMIN)) {
             $result = Role::whereIn('slug', RoleSlug::webShowableRoles());
+            //$result=Role::all();
         } else {
             $result = Role::where('slug', '!=', 'super-admin')->whereIn('slug', RoleSlug::webShowableRoles());
         }
 
-        $results = $queryFilter->builder($result)->customFilter(new CommonMasterFilter)->paginate();
-
+        //$results = $queryFilter->builder($result)->customFilter(new CommonMasterFilter)->paginate();
+             $results=Role::paginate();
         $page = trans('pages_names.roles');
 
         $main_menu = 'settings';
