@@ -23,51 +23,335 @@
 
             <div class="row">
                 <div class="col-12">
-                    <div class="box">
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="text-danger iban_err"></span>
+                            <form method="post" action="{{ url('owners/store') }}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                {{-- <h4 class="card-title mb-4">Basic pills Wizard
+                                        </h4> --}}
 
-                        <div class="box-header with-border">
+                                                <div id="basic-pills-wizard" class="twitter-bs-wizard">
+                                                    <ul class="twitter-bs-wizard-nav">
+                                                        <li class="nav-item">
+                                                            <a href="#owner-details" class="nav-link" data-toggle="tab">
+                                                                <span class="step-number mr-2">01</span>
+                                                                @lang('view_pages.owner_details')
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a href="#contact-person-details" class="nav-link" data-toggle="tab">
+                                                                <span class="step-number mr-2">02</span>
+                                                                @lang('view_pages.contact_person_details')
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="nav-item">
+                                                            <a href="#bank-detail" class="nav-link" data-toggle="tab">
+                                                                <span class="step-number mr-2">03</span>
+                                                                @lang('view_pages.bank_details')
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="nav-item">
+                                                            <a href="#documents" class="nav-link" data-toggle="tab">
+                                                                <span class="step-number mr-2">04</span>
+                                                                @lang('view_pages.document')
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="tab-content twitter-bs-wizard-tab-content">
+
+                                                        <div class="tab-pane" id="owner-details">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="company_name">@lang('view_pages.company_name')
+                                                                            <span class="text-danger">*</span></label>
+                                                                        <input class="form-control" type="text" id="company_name" name="company_name" value="{{ old('company_name') }}" required="" placeholder="@lang('view_pages.enter') @lang('view_pages.company_name')">
+                                                                        <span class="text-danger">{{ $errors->first('company_name') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="owner_name">@lang('view_pages.owner_name') <span class="text-danger">*</span></label>
+                                                                        <input class="form-control" type="text" id="owner_name" name="owner_name" value="{{ old('owner_name') }}" required="" placeholder="@lang('view_pages.enter') @lang('view_pages.owner_name')">
+                                                                        <span class="text-danger">{{ $errors->first('owner_name') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-4 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="email">@lang('view_pages.email') <span class="text-danger">*</span></label>
+                                                                        <input class="form-control" type="email" id="email" name="email" value="{{ old('email') }}" required="" placeholder="@lang('view_pages.enter') @lang('view_pages.email')">
+                                                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-4 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="password">@lang('view_pages.password') <span class="text-danger">*</span></label>
+                                                                        <input class="form-control" type="password" id="password" name="password" value="{{ old('password') }}" required="" placeholder="@lang('view_pages.enter') @lang('view_pages.password')">
+                                                                        <span class="text-danger">{{ $errors->first('password') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-4 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="password_confrim">@lang('view_pages.confirm_password')
+                                                                            <span class="text-danger">*</span></label>
+                                                                        <input class="form-control" type="password" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}" required="" placeholder="@lang('view_pages.enter') @lang('view_pages.password_confirmation')">
+                                                                        <span class="text-danger">{{ $errors->first('password') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-12 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="address">@lang('view_pages.address') <span class="text-danger">*</span></label>
+                                                                        <input class="form-control" type="text" id="address" name="address" value="{{ old('address') }}" placeholder="@lang('view_pages.enter') @lang('view_pages.address')">
+                                                                        <span class="text-danger">{{ $errors->first('address') }}</span>
+
+                                                                    </div>
+                                                                </div>
 
 
-                            <div class="row text-right">
 
 
-                                <div class="col-2">
-                                    <div class="form-group">
-                                        <input type="text" id="search_keyword" name="search" class="form-control" placeholder="@lang('view_pages.enter_keyword')">
+
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="postal_code">@lang('view_pages.postal_code')
+                                                                            <span class="text-danger">*</span></label>
+                                                                        <input class="form-control" type="number" id="postal_code" name="postal_code" value="{{ old('postal_code') }}" required="" placeholder="@lang('view_pages.enter') @lang('view_pages.postal_code')">
+                                                                        <span class="text-danger">{{ $errors->first('postal_code') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="city">@lang('view_pages.city') <span class="text-danger">*</span></label>
+                                                                        <input class="form-control" type="text" id="locality" name="city" value="{{ old('city') }}" required="" placeholder="@lang('view_pages.enter') @lang('view_pages.city')">
+                                                                        <span class="text-danger">{{ $errors->first('city') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="admin_id">@lang('view_pages.select_area')<span class="text-danger">*</span></label>
+                                                                        <select name="service_location_id" id="service_location_id" class="form-control" readonly>
+                                                                            {{-- <option value="" selected disabled> @lang('view_pages.select_area')</option> --}}
+                                                                            {{-- @foreach ($services as $key => $service) --}}
+                                                                            <option value="{{ $area->id }}" {{ old('service_location_id') == $area->id ? 'selected' : '' }}>{{ $area->name }}</option>
+                                                                            {{-- @endforeach --}}
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="expiry_date">@lang('view_pages.expiry_date')
+                                                                            <span class="text-danger">*</span></label>
+                                                                        <div id="datepicker" class="date-pick input-group date date-custom" data-date-format="yyyy-mm-dd">
+                                                                            <input id="expiry_date" alt="" name="expiry_date" placeholder="yyyy-mm-dd" type="text" class="form-control" value="{{ old('expiry_date') }}" autocomplete="off">
+                                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                        </div>
+                                                                        <span class="text-danger">{{ $errors->first('expiry_date') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="no_of_vehicles">@lang('view_pages.no_of_vehicles')
+                                                                            <span class="text-danger">*</span></label>
+                                                                        <input class="form-control" type="number" min="1" id="no_of_vehicles" name="no_of_vehicles" value="{{ old('no_of_vehicles') }}" required="" placeholder="@lang('view_pages.enter') @lang('view_pages.no_of_vehicles')">
+                                                                        <span class="text-danger">{{ $errors->first('no_of_vehicles') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="tax_number">@lang('view_pages.tax_number') <span class="text-danger">*</span></label>
+                                                                        <input class="form-control" type="text" id="tax_number" name="tax_number" value="{{ old('tax_number') }}" required="" placeholder="@lang('view_pages.enter') @lang('view_pages.tax_number')">
+                                                                        <span class="text-danger">{{ $errors->first('tax_number') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-12 btn-group mt-3">
+                                                                    <ul class="admin-add-btn">
+                                                                        <li>
+                                                                            <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">{{ trans('view_pages.create') }}</button>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="tab-pane" id="contact-person-details">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="name">@lang('view_pages.name') <span class="text-danger">*</span></label>
+                                                                        <input class="form-control" type="text" id="name" name="name" value="{{ old('name') }}" required="" placeholder="@lang('view_pages.enter') @lang('view_pages.name')">
+                                                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="surname">@lang('view_pages.surname') <span class="text-danger">*</span></label>
+                                                                        <input class="form-control" type="text" id="surname" name="surname" value="{{ old('surname') }}" required="" placeholder="@lang('view_pages.enter') @lang('view_pages.surname')">
+                                                                        <span class="text-danger">{{ $errors->first('surname') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="mobile">@lang('view_pages.mobile')<span class="text-danger">*</span></label>
+                                                                        <input class="form-control" type="text" id="mobile" name="mobile" value="{{ old('mobile') }}" required="" placeholder="9521832670">
+                                                                        <span class="text-danger">{{ $errors->first('mobile') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="phone">@lang('view_pages.phone')</label>
+                                                                        <input class="form-control" type="text" id="phone" name="phone" value="{{ old('phone') }}" placeholder="15218326703">
+                                                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="tab-pane" id="bank-detail">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="ifsc">@lang('view_pages.ifsc') <span class="text-danger">*</span></label>
+                                                                        <input class="form-control" type="text" id="ifsc" name="ifsc" value="{{ old('ifsc') }}" required placeholder="@lang('view_pages.enter') @lang('view_pages.ifsc')">
+                                                                        <span class="text-danger ifsc_err">{{ $errors->first('ifsc') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="bank_name">@lang('view_pages.bank_name')</label>
+                                                                        <input class="form-control" type="text" id="bank_name" name="bank_name" value="{{ old('bank_name') }}" placeholder="@lang('view_pages.enter') @lang('view_pages.bank_name')">
+                                                                        <span class="text-danger">{{ $errors->first('bank_name') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-6 float-left mb-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="account_no">@lang('view_pages.account_no')</label>
+                                                                        <input class="form-control" type="text" id="account_no" name="account_no" value="{{ old('account_no') }}" placeholder="@lang('view_pages.enter') @lang('view_pages.account_no')">
+                                                                        <span class="text-danger">{{ $errors->first('account_no') }}</span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-12 btn-group mt-3">
+                                                                    <ul class="admin-add-btn">
+                                                                        <li>
+                                                                            <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">{{ trans('view_pages.create') }}</button>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="tab-pane" id="documents">
+                                                            <div class="row">
+                                                                @foreach ($needed_document as $key => $item)
+                                                                <input type="hidden" name="needed_document[]" value="{{ $item->id }}">
+
+                                                                <div class="col-sm-12 pb-3">
+                                                                    <div class="col-sm-6  float-left mb-md-3">
+                                                                        <div class="form-group">
+                                                                            <label for="name">@lang('view_pages.name') <span class="text-danger">*</span></label>
+                                                                            <input class="form-control" type="text" name="doc_name" value="{{$item->name}}" placeholder="@lang('view_pages.document_name')" readonly>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    @if ($item->has_expiry_date)
+                                                                    <div class="col-sm-6 float-left mb-md-3">
+                                                                        <div class="form-group">
+                                                                            <label for="expiry_date">@lang('view_pages.expiry_date') <span class="text-danger">*</span></label>
+                                                                            <div id="datepicker" class="date-pick input-group date date-custom" data-date-format="yyyy-mm-dd">
+                                                                                <input alt="" name="expiry_date[]" placeholder="yyyy-mm-dd" type="text" class="form-control" value="{{old('expiry_date.'.$key)}}" autocomplete="off">
+                                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                            </div>
+                                                                            <span class="text-danger">{{ $errors->first('expiry_date.'.$key) }}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    @endif
+
+                                                                    <div class="col-sm-6 float-left mb-md-3">
+                                                                        <div class="form-group profile-img">
+                                                                            <label>{{ trans('view_pages.document')}} <span class="text-danger">*</span></label>
+                                                                            <div class="col-12" style="display: inline;">
+                                                                                <div class="col-md-12 float-left input-group p-0">
+                                                                                    <span class="input-group-btn">
+                                                                                        <span class="btn btn-default btn-file">
+                                                                                            Browse… <input type="file" class="imgInp" name="document_{{$item->id}}" required>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                    <input type="text" class="form-control" readonly>
+                                                                                </div>
+                                                                                <div class="col-md-12 float-left p-0">
+                                                                                    <img class='img-upload' width="100px" class="rounded avatar-lg" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    {{-- <div style="border-bottom: 1px solid #eff2f7;"></div> --}}
+                                                                </div>
+                                                                @endforeach
+
+                                                                <div class="col-md-6 float-left">
+                                                                    <div class="form-group profile-img">
+                                                                        <label>{{ trans('view_pages.business_license')}} <span class="text-danger">*</span></label>
+                                                                        <div class="col-12" style="display: inline;">
+                                                                            <div class="col-md-12 float-left p-0">
+                                                                                <img class='img-upload' width="100px" class="rounded avatar-lg" />
+                                                                            </div>
+                                                                            <div class="col-md-12 float-left input-group p-0">
+                                                                                <span class="input-group-btn">
+                                                                                    <span class="btn btn-default btn-file">
+                                                                                        @lang('view_pages.browse')… <input type="file" class="imgInp" name="business_license" required>
+                                                                                    </span>
+                                                                                </span>
+                                                                                <input type="text" class="form-control" readonly>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-12 btn-group mt-3">
+                                                                    <ul class="admin-add-btn">
+
+                                                                        <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">{{ trans('view_pages.create') }}</button>
+
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <ul class="pager wizard twitter-bs-wizard-pager-link">
+                                                        <li class="previous"><a href="#">@lang('view_pages.previous')</a></li>
+                                                        <li class="next"><a href="#">@lang('view_pages.next')</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="col-2">
-                                    <button class="btn btn-success btn-outline btn-sm mr-2" type="submit">
-                                        @lang('view_pages.search')
-                                    </button>
-                                </div>
-
-                                <div class="col-8 text-right">
-                                    <a href="{{ url('owners/create',$area->id)}}" class="btn btn-primary btn-sm">
-                                        <i class="mdi mdi-plus-circle ml-4 mr-2"></i>@lang('view_pages.add')</a>
-                                    <a class="btn btn-danger btn-sm">
-                                        Export</a>
-                                </div>
-                                <div class="box-controls pull-right">
-                                    <div class="lookup lookup-circle lookup-right">
-                                        <input type="text" name="s">
-                                    </div>
-                                </div>
-                            </div>
-
-
-
+                            </form>
                         </div>
-
-                        <div id="js-project-partial-target">
-                            <include-fragment src="fetch/{{$area->id}}">
-                                <span style="text-align: center;font-weight: bold;"> @lang('view_pages.loading')</span>
-                            </include-fragment>
-                        </div>
-
-
-
                     </div>
                 </div>
             </div>
